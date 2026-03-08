@@ -90,8 +90,8 @@ def psnr(img1, img2, mask=None, pixel_max=1.0):
 @torch.no_grad()
 def metric_vol(img1, img2, metric="psnr", pixel_max=1.0):
     """Metrics for volume. img1 must be GT."""
-    assert metric in ["psnr", "ssim"]
-    if isinstance(img2, np.ndarray):
+    assert metric in ["psnr", "ssim", "mse"]
+    if isinstance(img1, np.ndarray):
         img1 = torch.from_numpy(img1.copy())
     if isinstance(img2, np.ndarray):
         img2 = torch.from_numpy(img2.copy())
@@ -102,6 +102,9 @@ def metric_vol(img1, img2, metric="psnr", pixel_max=1.0):
         mse_out = torch.mean((img1 - img2) ** 2)
         psnr_out = 10 * torch.log10(pixel_max**2 / mse_out.float())
         return psnr_out.item(), None
+    elif metric == "mse":
+        mse_out = torch.mean((img1 - img2) ** 2)
+        return mse_out.item(), None
     elif metric == "ssim":
         ssims = []
         for axis in [0, 1, 2]:
@@ -143,7 +146,7 @@ def metric_proj(img1, img2, metric="psnr", axis=2, pixel_max=1.0):
     """
     assert axis in [0, 1, 2, None]
     assert metric in ["psnr", "ssim"]
-    if isinstance(img2, np.ndarray):
+    if isinstance(img1, np.ndarray):
         img1 = torch.from_numpy(img1)
     if isinstance(img2, np.ndarray):
         img2 = torch.from_numpy(img2)

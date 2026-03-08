@@ -17,10 +17,11 @@ def main(args):
         raise ValueError("{} find no folder!".format(case_paths))
 
     for case_path in case_paths:
-        case_name = osp.basename(case_path).split(".")[0]
-        case_output_path = f"{output_path}/{case_name}"
-        if not osp.exists(case_output_path):
-            cmd = f"CUDA_VISIBLE_DEVICES={device} python train.py -s {case_path} -m {case_output_path}"
+        case_name = osp.basename(case_path)
+        case_output = osp.join(output_path, case_name)
+        if not osp.exists(case_output):
+        # Windows 环境变量设置方式
+            cmd = f"set CUDA_VISIBLE_DEVICES={device} && python train.py -s {case_path} -m {case_output}"
             if config_path:
                 cmd += f" --config {config_path}"
             os.system(cmd)

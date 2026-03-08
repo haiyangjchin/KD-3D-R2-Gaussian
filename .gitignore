@@ -1,13 +1,115 @@
-__pycache__
-build/
+# 原来的gitignore文件：
+# __pycache__
+# build/
+# *.egg-info
+# .vscode/
+# data/
+# output
+# *.zip
+# TIGRE*
+# volume_processed/
+# volume_raw
+# FIPS_raw
+# FIPS_processed
+# other_scripts
+
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg
 *.egg-info
+
+# build
+build/
+dist/
+
+# compiled libs
+*.so
+*.dll
+*.obj
+*.lib
+*.exp
+*.o
+
+# IDE
 .vscode/
+.claude/
+
+# logs
+*.log
+train_pid.txt
+
+# numpy / checkpoints
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt
+
+# outputs
+output/
+outputs/
+cnn_30epoch/
+cnn_analysis/
+cnn_analysis_better2/
+cnn_analysis_teacher/
+cnn_analysis_teacher_v3/
+cnn_better/
+cnn_better2/
+cnn_medium_10epoch/
+cnn_output/
+cnn_output_final/
+cnn_output_test/
+cnn_teacher_30epoch/
+cnn_teacher_30epoch_v2/
+cnn_teacher_30epoch_v3/
+cnn_teacher_50epoch_v4/
+cnn_test/
+distill_final_500/
+distill_student_epoch34_v1/
+distill_test_distill/
+distill_test_distill_medium/
+
+# data
 data/
-output
-*.zip
-TIGRE*
 volume_processed/
-volume_raw
-FIPS_raw
-FIPS_processed
-other_scripts
+volume_raw/
+FIPS_raw/
+FIPS_processed/
+
+# archives
+*.zip
+
+# local / temp
+nul
+other_scripts/
+*.bat
+* copy.py
+
+# system
+desktop.ini
+.DS_Store
+
+# external libs
+TIGRE*
+
+# submodule build artifacts
+r2_gaussian/submodules/**/build/
+r2_gaussian/submodules/**/dist/
+r2_gaussian/submodules/**/*.egg-info/
+r2_gaussian/submodules/**/__pycache__/
+r2_gaussian/submodules/**/*.pyd
+r2_gaussian/submodules/**/*.obj
+r2_gaussian/submodules/**/*.lib
+r2_gaussian/submodules/**/*.exp
+
+# glm docs not needed locally
+r2_gaussian/submodules/xray-gaussian-rasterization-voxelization/third_party/glm/doc/manual.pdf
+
+# 实验结果文件：
+*.pickle
+*.txt
+

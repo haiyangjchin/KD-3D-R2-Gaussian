@@ -1,0 +1,25 @@
+data_path: ./data/real_dataset/cone_ntrain_25_angle_360/pine
+dataset_type: Blender
+epochs: 50
+log_interval: 10
+lr: 0.001
+lr_patience: 10
+max_projections: null
+model_size: medium
+num_workers: 2
+output_dir: ./cnn_teacher_50epoch_v4
+proj_size:
+- 64
+- 64
+save_interval: 5
+seed: 42
+ssim_weight: 0.2
+use_dropout: true
+use_ssim: true
+use_tensorboard: false
+vol_size:
+- 64
+- 64
+- 64
+weight_decay: 1.0e-05
+resume_from: ./cnn_teacher_30epoch_v3/best_model.pth
