@@ -408,3 +408,14 @@ If this repo helps you, please consider citing our work:
   year={2024}
 }
 ```
+
+
+## Windows Build Note
+
+For Windows compilation, we modified the following file locally:
+
+r2_gaussian/submodules/xray-gaussian-rasterization-voxelization/setup.py
+
+by adding the macro `_USE_MATH_DEFINES` to ensure compatibility with MSVC/NVCC.
+
+This change is only required for Windows environments.
