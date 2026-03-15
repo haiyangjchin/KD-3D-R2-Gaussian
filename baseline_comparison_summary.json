@@ -1,0 +1,9 @@
+[
+  {
+    "experiment": "Distillation (\u03bb_tv=0.1) - Pine",
+    "dataset": "pine",
+    "lambda_tv": 0.1,
+    "iteration": 10000,
+    "psnr_3d": 38.053002121741976,
+    "ssim_3d": 0.9467372008761389,
+    "mae": 

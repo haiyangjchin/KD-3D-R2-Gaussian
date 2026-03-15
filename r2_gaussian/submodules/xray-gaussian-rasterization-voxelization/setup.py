@@ -1,4 +1,5 @@
 #
+#
 # Copyright (C) 2023, Inria
 # GRAPHDECO research group, https://team.inria.fr/graphdeco
 # All rights reserved.
@@ -34,10 +35,12 @@ setup(
             ],
             extra_compile_args={
                 "nvcc": [
-                    "-I"
-                    + os.path.join(
-                        os.path.dirname(os.path.abspath(__file__)), "third_party/glm/"
-                    )
+                    "-I" + os.path.join(os.path.dirname(os.path.abspath(__file__)), "third_party/glm/"),
+                    "-D_USE_MATH_DEFINES"  # 添加此宏定义
+                ],
+                # 若需要对 C++ 编译器（如 MSVC）也生效，可添加以下配置
+                "cxx": [
+                    "/D_USE_MATH_DEFINES"  # MSVC 的宏定义格式
                 ]
             },
         )

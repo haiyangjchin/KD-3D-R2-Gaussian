@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 """
-Training script with knowledge distillation from pre-trained CNN.
-
-This script extends the improved training with knowledge distillation,
-where a pre-trained CNN (teacher) provides additional supervision
-to the 3D Gaussian model (student).
+Resume training from checkpoint for knowledge distillation.
+This script modifies the original train_with_distillation.py to support resuming from checkpoint.
 """
 
 import os
@@ -640,11 +637,9 @@ def train_with_distillation(
 
         if iteration in checkpoint_iterations:
             tqdm.write(f"[ITER {iteration}] Saving Checkpoint")
-            ckpt_dir = osp.join(model_path, "ckpt")
-            os.makedirs(ckpt_dir, exist_ok=True)
             torch.save(
                 (gaussians.capture(), iteration),
-                osp.join(ckpt_dir, f"chkpnt{iteration}.pth"),
+                osp.join(model_path, "ckpt", f"chkpnt{iteration}.pth"),
             )
 
         # Update progress bar
@@ -681,10 +676,12 @@ def train_with_distillation(
 
 def main():
     """
-    Main function for training with knowledge distillation.
+    Main function for training with knowledge distillation, with resume support.
     """
     # Set up command line argument parser
-    parser = ArgumentParser(description="Training with Knowledge Distillation")
+    parser = ArgumentParser(
+        description="Training with Knowledge Distillation (with resume support)"
+    )
 
     # Add parameters from ModelParams, OptimizationParams, PipelineParams
     # These classes add their arguments to the parser
@@ -750,6 +747,14 @@ def main():
         help="Disable improved training techniques",
     )
 
+    # Resume argument
+    parser.add_argument(
+        "--resume_checkpoint",
+        type=str,
+        default=None,
+        help="Path to checkpoint file to resume from (e.g., chkpnt9000.pth)",
+    )
+
     args = parser.parse_args()
 
     # Load configuration from YAML file
@@ -798,6 +803,27 @@ def main():
     if use_distillation:
         print(f"  Teacher model: {args.cnn_model}")
     print(f"Improved training: {'ENABLED' if use_improvements else 'DISABLED'}")
+
+    # Resume logic
+    start_iteration = 0
+    if args.resume_checkpoint and osp.exists(args.resume_checkpoint):
+        print(f"\nResuming from checkpoint: {args.resume_checkpoint}")
+        # Load checkpoint
+        checkpoint = torch.load(
+            args.resume_checkpoint, map_location="cpu", weights_only=False
+        )
+        if isinstance(checkpoint, tuple) and len(checkpoint) == 2:
+            model_state, loaded_iter = checkpoint
+            start_iteration = loaded_iter
+            print(f"  Loaded iteration: {start_iteration}")
+        else:
+            print(f"Warning: Invalid checkpoint format, starting from iteration 0")
+    else:
+        if args.resume_checkpoint:
+            print(
+                f"Warning: Checkpoint not found at {args.resume_checkpoint}, starting from iteration 0"
+            )
+
     print("=" * 70)
 
     # Load scene
@@ -817,14 +843,21 @@ def main():
     # Initialize Gaussian model
     gaussians = GaussianModel(scale_bound)
 
-    # Initialize Gaussian parameters from dataset
-    initialize_gaussian(gaussians, model_args, None)
+    # Resume from checkpoint if provided
+    if args.resume_checkpoint and osp.exists(args.resume_checkpoint):
+        print(f"Restoring Gaussian model from checkpoint...")
+        gaussians.restore(model_state, opt_args)
+        print(f"Model restored successfully.")
+    else:
+        # Initialize Gaussian parameters from dataset
+        initialize_gaussian(gaussians, model_args, None)
+
     scene.gaussians = gaussians
 
     # Run training
     train_with_distillation(
         model_path=args.output_dir,
-        iteration=0,
+        iteration=start_iteration,
         testing_iterations=args.test_iterations,
         scene=scene,
         gaussians=gaussians,

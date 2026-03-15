@@ -1,0 +1,2 @@
+experiment,iteration,psnr_3d,ssim_3d,psnr_2d,ssim_2d
+baseline_r2_gaussian_tv0.05,iter_002500,37.2898,0.926226,30.0341,0.961808
