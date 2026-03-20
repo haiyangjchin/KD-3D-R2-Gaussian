@@ -749,6 +749,12 @@ def main():
         action="store_true",
         help="Disable improved training techniques",
     )
+    parser.add_argument(
+        "--resume",
+        type=str,
+        default=None,
+        help="Path to checkpoint to resume training from",
+    )
 
     args = parser.parse_args()
 
@@ -817,6 +823,15 @@ def main():
     # Initialize Gaussian model
     gaussians = GaussianModel(scale_bound)
 
+    # Resume from checkpoint if specified
+    start_iteration = 0
+    if args.resume and osp.exists(args.resume):
+        print(f"Resuming from checkpoint: {args.resume}")
+        checkpoint = torch.load(args.resume, map_location="cuda", weights_only=False)
+        gaussians_params, start_iteration = checkpoint
+        gaussians.restore(gaussians_params, opt_args)
+        print(f"Resumed from iteration {start_iteration}")
+
     # Initialize Gaussian parameters from dataset
     initialize_gaussian(gaussians, model_args, None)
     scene.gaussians = gaussians
@@ -824,7 +839,7 @@ def main():
     # Run training
     train_with_distillation(
         model_path=args.output_dir,
-        iteration=0,
+        iteration=start_iteration,
         testing_iterations=args.test_iterations,
         scene=scene,
         gaussians=gaussians,
