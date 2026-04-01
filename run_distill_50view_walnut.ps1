@@ -1,0 +1,1 @@
+cmd /c "python train_with_distillation.py --config experiments/distill/distill_50view_walnut.yaml --output_dir ./experiments/distill/distill_50view_walnut > experiments/logs/distill/distill_50view_walnut.log 2>&1"
