@@ -1,0 +1,29 @@
+2026-02-02 17:32:03.534854: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:05.655308: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:07,693 - INFO - Created model with 21,884,897 parameters
+2026-02-02 17:32:07,693 - INFO - Feature sizes: [32, 64, 128, 256]
+2026-02-02 17:32:08,008 - INFO - Loading scene from ./data/real_dataset/cone_ntrain_25_angle_360/pine (type: Blender)
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Reading camera 1/25 for trainReading camera 2/25 for trainReading camera 3/25 for trainReading camera 4/25 for trainReading camera 5/25 for trainReading camera 6/25 for trainReading camera 7/25 for trainReading camera 8/25 for trainReading camera 9/25 for trainReading camera 10/25 for trainReading camera 11/25 for trainReading camera 12/25 for trainReading camera 13/25 for trainReading camera 14/25 for trainReading camera 15/25 for trainReading camera 16/25 for trainReading camera 17/25 for trainReading camera 18/25 for trainReading camera 19/25 for trainReading camera 20/25 for trainReading camera 21/25 for trainReading camera 22/25 for trainReading camera 23/25 for trainReading camera 24/25 for trainReading camera 25/25 for train
+Reading camera 1/100 for testReading camera 2/100 for testReading camera 3/100 for testReading camera 4/100 for testReading camera 5/100 for testReading camera 6/100 for testReading camera 7/100 for testReading camera 8/100 for testReading camera 9/100 for testReading camera 10/100 for testReading camera 11/100 for testReading camera 12/100 for testReading camera 13/100 for testReading camera 14/100 for testReading camera 15/100 for testReading camera 16/100 for testReading camera 17/100 for testReading camera 18/100 for testReading camera 19/100 for testReading camera 20/100 for testReading camera 21/100 for testReading camera 22/100 for testReading camera 23/100 for testReading camera 24/100 for testReading camera 25/100 for testReading camera 26/100 for testReading camera 27/100 for testReading camera 28/100 for testReading camera 29/100 for testReading camera 30/100 for testReading camera 31/100 for testReading camera 32/100 for testReading camera 33/100 for testReading camera 34/100 for testReading camera 35/100 for testReading camera 36/100 for testReading camera 37/100 for testReading camera 38/100 for testReading camera 39/100 for testReading camera 40/100 for testReading camera 41/100 for testReading camera 42/100 for testReading camera 43/100 for testReading camera 44/100 for testReading camera 45/100 for testReading camera 46/100 for testReading camera 47/100 for testReading camera 48/100 for testReading camera 49/100 for testReading camera 50/100 for testReading camera 51/100 for testReading camera 52/100 for testReading camera 53/100 for testReading camera 54/100 for testReading camera 55/100 for testReading camera 56/100 for testReading camera 57/100 for testReading camera 58/100 for testReading camera 59/100 for testReading camera 60/100 for testReading camera 61/100 for testReading camera 62/100 for testReading camera 63/100 for testReading camera 64/100 for testReading camera 65/100 for testReading camera 66/100 for testReading camera 67/100 for testReading camera 68/100 for testReading camera 69/100 for testReading camera 70/100 for testReading camera 71/100 for testReading camera 72/100 for testReading camera 73/100 for testReading camera 74/100 for testReading camera 75/100 for testReading camera 76/100 for testReading camera 77/100 for testReading camera 78/100 for testReading camera 79/100 for testReading camera 80/100 for testReading camera 81/100 for testReading camera 82/100 for testReading camera 83/100 for testReading camera 84/100 for testReading camera 85/100 for testReading camera 86/100 for testReading camera 87/100 for testReading camera 88/100 for testReading camera 89/100 for testReading camera 90/100 for testReading camera 91/100 for testReading camera 92/100 for testReading camera 93/100 for testReading camera 94/100 for testReading camera 95/100 for testReading camera 96/100 for testReading camera 97/100 for testReading camera 98/100 for testReading camera 99/100 for testReading camera 100/100 for test2026-02-02 17:32:08,353 - INFO - Loading 100 projections for test split
+2026-02-02 17:32:08,382 - INFO - Original projection shape: (100, 560, 560)
+2026-02-02 17:32:08,382 - INFO - Original volume shape: (256, 256, 256)
+2026-02-02 17:32:08,382 - INFO - Target projection size: (64, 64)
+2026-02-02 17:32:08,382 - INFO - Target volume size: (64, 64, 64)
+
+Evaluating model on 1 test samples...
+
+============================================================
+Evaluation Results:
+============================================================
+Model: ./cnn_teacher_50epoch_v4/checkpoints/checkpoint_epoch_044.pth
+Test samples: 1
+PSNR: 22.7633 dB
+MAE: 0.022015
+SSIM: 0.626647
+============================================================
+Metrics saved to: cnn_teacher_50epoch_v4\checkpoints\metrics.yaml
+Detailed report saved to: cnn_teacher_50epoch_v4\checkpoints\evaluation_report.txt

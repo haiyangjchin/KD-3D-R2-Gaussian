@@ -1,0 +1,618 @@
+2026-02-02 17:23:28.626039: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:23:30.725630: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:23:32,434 - INFO - Configuration:
+2026-02-02 17:23:32,436 - INFO -   data_path: ./data/real_dataset/cone_ntrain_25_angle_360/pine
+2026-02-02 17:23:32,436 - INFO -   dataset_type: Blender
+2026-02-02 17:23:32,436 - INFO -   proj_size: [64, 64]
+2026-02-02 17:23:32,436 - INFO -   vol_size: [64, 64, 64]
+2026-02-02 17:23:32,437 - INFO -   max_projections: None
+2026-02-02 17:23:32,437 - INFO -   model_size: medium
+2026-02-02 17:23:32,437 - INFO -   use_dropout: True
+2026-02-02 17:23:32,437 - INFO -   epochs: 50
+2026-02-02 17:23:32,437 - INFO -   lr: 0.001
+2026-02-02 17:23:32,437 - INFO -   weight_decay: 1e-05
+2026-02-02 17:23:32,437 - INFO -   lr_patience: 10
+2026-02-02 17:23:32,437 - INFO -   use_ssim: True
+2026-02-02 17:23:32,437 - INFO -   ssim_weight: 0.2
+2026-02-02 17:23:32,437 - INFO -   output_dir: ./cnn_teacher_50epoch_v4
+2026-02-02 17:23:32,437 - INFO -   save_interval: 5
+2026-02-02 17:23:32,437 - INFO -   log_interval: 10
+2026-02-02 17:23:32,437 - INFO -   use_tensorboard: False
+2026-02-02 17:23:32,438 - INFO -   num_workers: 2
+2026-02-02 17:23:32,438 - INFO -   seed: 42
+2026-02-02 17:23:32,438 - INFO -   resume_from: ./cnn_teacher_30epoch_v3/best_model.pth
+2026-02-02 17:23:32,441 - INFO - Saved configuration to ./cnn_teacher_50epoch_v4\config.yaml
+2026-02-02 17:23:33,994 - INFO - Using device: cuda
+2026-02-02 17:23:33,994 - INFO - Creating dataloaders...
+2026-02-02 17:23:33,994 - INFO - Loading scene from ./data/real_dataset/cone_ntrain_25_angle_360/pine (type: Blender)
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Reading camera 1/25 for trainReading camera 2/25 for trainReading camera 3/25 for trainReading camera 4/25 for trainReading camera 5/25 for trainReading camera 6/25 for trainReading camera 7/25 for trainReading camera 8/25 for trainReading camera 9/25 for trainReading camera 10/25 for trainReading camera 11/25 for trainReading camera 12/25 for trainReading camera 13/25 for trainReading camera 14/25 for trainReading camera 15/25 for trainReading camera 16/25 for trainReading camera 17/25 for trainReading camera 18/25 for trainReading camera 19/25 for trainReading camera 20/25 for trainReading camera 21/25 for trainReading camera 22/25 for trainReading camera 23/25 for trainReading camera 24/25 for trainReading camera 25/25 for train2026-02-02 17:23:34,187 - INFO - Loading 25 projections for train split
+2026-02-02 17:23:34,195 - INFO - Original projection shape: (25, 560, 560)
+2026-02-02 17:23:34,195 - INFO - Original volume shape: (256, 256, 256)
+2026-02-02 17:23:34,195 - INFO - Target projection size: [64, 64]
+2026-02-02 17:23:34,195 - INFO - Target volume size: [64, 64, 64]
+2026-02-02 17:23:34,197 - INFO - Loading scene from ./data/real_dataset/cone_ntrain_25_angle_360/pine (type: Blender)
+
+Reading camera 1/25 for trainReading camera 2/25 for trainReading camera 3/25 for trainReading camera 4/25 for trainReading camera 5/25 for trainReading camera 6/25 for trainReading camera 7/25 for trainReading camera 8/25 for trainReading camera 9/25 for trainReading camera 10/25 for trainReading camera 11/25 for trainReading camera 12/25 for trainReading camera 13/25 for trainReading camera 14/25 for trainReading camera 15/25 for trainReading camera 16/25 for trainReading camera 17/25 for trainReading camera 18/25 for trainReading camera 19/25 for trainReading camera 20/25 for trainReading camera 21/25 for trainReading camera 22/25 for trainReading camera 23/25 for trainReading camera 24/25 for trainReading camera 25/25 for train
+Reading camera 1/100 for testReading camera 2/100 for testReading camera 3/100 for testReading camera 4/100 for testReading camera 5/100 for testReading camera 6/100 for testReading camera 7/100 for testReading camera 8/100 for testReading camera 9/100 for testReading camera 10/100 for testReading camera 11/100 for testReading camera 12/100 for testReading camera 13/100 for testReading camera 14/100 for testReading camera 15/100 for testReading camera 16/100 for testReading camera 17/100 for testReading camera 18/100 for testReading camera 19/100 for testReading camera 20/100 for testReading camera 21/100 for testReading camera 22/100 for testReading camera 23/100 for testReading camera 24/100 for testReading camera 25/100 for testReading camera 26/100 for testReading camera 27/100 for testReading camera 28/100 for testReading camera 29/100 for testReading camera 30/100 for testReading camera 31/100 for testReading camera 32/100 for testReading camera 33/100 for testReading camera 34/100 for testReading camera 35/100 for testReading camera 36/100 for testReading camera 37/100 for testReading camera 38/100 for testReading camera 39/100 for testReading camera 40/100 for testReading camera 41/100 for testReading camera 42/100 for testReading camera 43/100 for testReading camera 44/100 for testReading camera 45/100 for testReading camera 46/100 for testReading camera 47/100 for testReading camera 48/100 for testReading camera 49/100 for testReading camera 50/100 for testReading camera 51/100 for testReading camera 52/100 for testReading camera 53/100 for testReading camera 54/100 for testReading camera 55/100 for testReading camera 56/100 for testReading camera 57/100 for testReading camera 58/100 for testReading camera 59/100 for testReading camera 60/100 for testReading camera 61/100 for testReading camera 62/100 for testReading camera 63/100 for testReading camera 64/100 for testReading camera 65/100 for testReading camera 66/100 for testReading camera 67/100 for testReading camera 68/100 for testReading camera 69/100 for testReading camera 70/100 for testReading camera 71/100 for testReading camera 72/100 for testReading camera 73/100 for testReading camera 74/100 for testReading camera 75/100 for testReading camera 76/100 for testReading camera 77/100 for testReading camera 78/100 for testReading camera 79/100 for testReading camera 80/100 for testReading camera 81/100 for testReading camera 82/100 for testReading camera 83/100 for testReading camera 84/100 for testReading camera 85/100 for testReading camera 86/100 for testReading camera 87/100 for testReading camera 88/100 for testReading camera 89/100 for testReading camera 90/100 for testReading camera 91/100 for testReading camera 92/100 for testReading camera 93/100 for testReading camera 94/100 for testReading camera 95/100 for testReading camera 96/100 for testReading camera 97/100 for testReading camera 98/100 for testReading camera 99/100 for testReading camera 100/100 for test2026-02-02 17:23:34,411 - INFO - Loading 100 projections for test split
+2026-02-02 17:23:34,443 - INFO - Original projection shape: (100, 560, 560)
+2026-02-02 17:23:34,443 - INFO - Original volume shape: (256, 256, 256)
+2026-02-02 17:23:34,443 - INFO - Target projection size: [64, 64]
+2026-02-02 17:23:34,443 - INFO - Target volume size: [64, 64, 64]
+2026-02-02 17:23:34,453 - INFO - Creating model...
+2026-02-02 17:23:34,668 - INFO - Created model with 21,884,897 parameters
+2026-02-02 17:23:34,668 - INFO - Feature sizes: [32, 64, 128, 256]
+2026-02-02 17:23:37,071 - INFO - Loading checkpoint from ./cnn_teacher_30epoch_v3/best_model.pth
+2026-02-02 17:23:37,269 - INFO - Resuming from epoch 30
+2026-02-02 17:23:37,269 - INFO - Previous best loss: 0.028055
+2026-02-02 17:23:37,269 - INFO - Starting training...
+
+Epoch 31/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:23:39.508314: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:23:41.591893: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:23:45.728799: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:23:47.873557: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 31/50:   0%|          | 0/1 [00:13<?, ?it/s, Loss=0.1088, L1=0.0320]Epoch 31/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.04s/it, Loss=0.1088, L1=0.0320]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 31/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.07s/it, Loss=0.1088, L1=0.0320]
+2026-02-02 17:23:51,344 - INFO - Epoch 31/50 - Train Loss: 0.108810
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:23:53.716437: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:23:55.846974: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:23:59.790895: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:01.961799: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.93s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.97s/it]
+2026-02-02 17:24:05,311 - INFO - Epoch 31/50 - Val Loss: 0.095316
+Epoch 32/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:24:07.533640: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:09.649863: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:13.593423: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:15.813301: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 32/50:   0%|          | 0/1 [00:12<?, ?it/s, Loss=0.1018, L1=0.0334]Epoch 32/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.65s/it, Loss=0.1018, L1=0.0334]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 32/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.67s/it, Loss=0.1018, L1=0.0334]
+2026-02-02 17:24:18,979 - INFO - Epoch 32/50 - Train Loss: 0.101752
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:24:21.135334: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:23.229363: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:27.148129: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:29.297589: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.51s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.55s/it]
+2026-02-02 17:24:32,528 - INFO - Epoch 32/50 - Val Loss: 0.086132
+Epoch 33/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:24:34.712965: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:36.826870: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:40.730388: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:42.857665: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 33/50:   0%|          | 0/1 [00:12<?, ?it/s, Loss=0.1030, L1=0.0344]Epoch 33/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.51s/it, Loss=0.1030, L1=0.0344]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 33/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.55s/it, Loss=0.1030, L1=0.0344]
+2026-02-02 17:24:46,081 - INFO - Epoch 33/50 - Train Loss: 0.102966
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:24:48.276962: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:50.388318: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:54.432015: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:24:56.571260: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.79s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.82s/it]
+2026-02-02 17:24:59,899 - INFO - Epoch 33/50 - Val Loss: 0.083526
+Epoch 34/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:25:02.101607: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:25:04.210686: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:25:08.181176: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:25:10.296694: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 34/50:   0%|          | 0/1 [00:12<?, ?it/s, Loss=0.1060, L1=0.0357]Epoch 34/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.58s/it, Loss=0.1060, L1=0.0357]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 34/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.62s/it, Loss=0.1060, L1=0.0357]
+2026-02-02 17:25:13,518 - INFO - Epoch 34/50 - Train Loss: 0.105963
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:25:15.727607: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:25:17.872317: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:25:21.960895: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:25:24.064533: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.75s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.81s/it]
+2026-02-02 17:25:27,331 - INFO - Epoch 34/50 - Val Loss: 0.081553
+Epoch 35/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:25:29.543265: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:25:31.738716: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:25:35.715265: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:25:37.902614: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 35/50:   0%|          | 0/1 [00:12<?, ?it/s, Loss=0.1049, L1=0.0343]Epoch 35/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.72s/it, Loss=0.1049, L1=0.0343]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 35/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.99s/it, Loss=0.1049, L1=0.0343]
+2026-02-02 17:25:41,320 - INFO - Epoch 35/50 - Train Loss: 0.104949
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:25:43.599766: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:25:45.720233: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:25:49.862937: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:25:51.984536: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.94s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.99s/it]
+2026-02-02 17:25:55,313 - INFO - Epoch 35/50 - Val Loss: 0.081736
+2026-02-02 17:25:56,458 - INFO - Saved checkpoint to ./cnn_teacher_50epoch_v4\checkpoints\checkpoint_epoch_034.pth
+Epoch 36/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:25:58.633766: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:00.759936: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:04.742235: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:06.887159: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 36/50:   0%|          | 0/1 [00:12<?, ?it/s, Loss=0.1080, L1=0.0362]Epoch 36/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.61s/it, Loss=0.1080, L1=0.0362]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 36/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.64s/it, Loss=0.1080, L1=0.0362]
+2026-02-02 17:26:10,097 - INFO - Epoch 36/50 - Train Loss: 0.107997
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:26:12.377149: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:14.649314: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:18.805345: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:20.915294: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.16s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.28s/it]
+2026-02-02 17:26:24,373 - INFO - Epoch 36/50 - Val Loss: 0.082474
+Epoch 37/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:26:26.556209: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:28.685448: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:32.629276: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:34.748617: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 37/50:   0%|          | 0/1 [00:12<?, ?it/s, Loss=0.1106, L1=0.0375]Epoch 37/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.50s/it, Loss=0.1106, L1=0.0375]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 37/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.60s/it, Loss=0.1106, L1=0.0375]
+2026-02-02 17:26:37,973 - INFO - Epoch 37/50 - Train Loss: 0.110624
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:26:40.241423: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:42.399063: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:46.360468: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:48.479552: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.87s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.09s/it]
+2026-02-02 17:26:52,066 - INFO - Epoch 37/50 - Val Loss: 0.082290
+Epoch 38/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:26:54.359051: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:26:56.709886: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:01.114684: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:03.331605: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 38/50:   0%|          | 0/1 [00:13<?, ?it/s, Loss=0.1109, L1=0.0378]Epoch 38/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.45s/it, Loss=0.1109, L1=0.0378]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 38/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.57s/it, Loss=0.1109, L1=0.0378]
+2026-02-02 17:27:06,635 - INFO - Epoch 38/50 - Train Loss: 0.110894
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:27:08.895811: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:11.155044: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:15.356958: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:17.747542: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.21s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.42s/it]
+2026-02-02 17:27:21,056 - INFO - Epoch 38/50 - Val Loss: 0.081646
+Epoch 39/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:27:23.411180: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:25.667241: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:29.806838: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:32.098576: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 39/50:   0%|          | 0/1 [00:13<?, ?it/s, Loss=0.1092, L1=0.0375]Epoch 39/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.39s/it, Loss=0.1092, L1=0.0375]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 39/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.48s/it, Loss=0.1092, L1=0.0375]
+2026-02-02 17:27:35,533 - INFO - Epoch 39/50 - Train Loss: 0.109204
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:27:37.817669: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:40.095672: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:44.325288: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:46.609669: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.29s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.57s/it]
+2026-02-02 17:27:50,107 - INFO - Epoch 39/50 - Val Loss: 0.081317
+Epoch 40/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:27:52.572596: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:54.950335: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:27:58.943749: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:01.138475: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 40/50:   0%|          | 0/1 [00:13<?, ?it/s, Loss=0.1067, L1=0.0363]Epoch 40/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.20s/it, Loss=0.1067, L1=0.0363]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 40/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.33s/it, Loss=0.1067, L1=0.0363]
+2026-02-02 17:28:04,443 - INFO - Epoch 40/50 - Train Loss: 0.106660
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:28:06.713202: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:08.896965: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:12.900581: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:14.991836: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.77s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.86s/it]
+2026-02-02 17:28:18,306 - INFO - Epoch 40/50 - Val Loss: 0.081111
+2026-02-02 17:28:19,257 - INFO - Saved checkpoint to ./cnn_teacher_50epoch_v4\checkpoints\checkpoint_epoch_039.pth
+Epoch 41/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:28:21.467724: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:23.624090: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:27.665905: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:29.811396: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 41/50:   0%|          | 0/1 [00:12<?, ?it/s, Loss=0.1042, L1=0.0350]Epoch 41/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.74s/it, Loss=0.1042, L1=0.0350]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 41/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.92s/it, Loss=0.1042, L1=0.0350]
+2026-02-02 17:28:33,176 - INFO - Epoch 41/50 - Train Loss: 0.104235
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:28:35.453770: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:37.590438: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:41.554270: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:43.649776: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.62s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.66s/it]
+2026-02-02 17:28:46,836 - INFO - Epoch 41/50 - Val Loss: 0.081044
+Epoch 42/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:28:49.006141: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:51.255446: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:55.303207: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:28:57.473390: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 42/50:   0%|          | 0/1 [00:12<?, ?it/s, Loss=0.1030, L1=0.0340]Epoch 42/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.93s/it, Loss=0.1030, L1=0.0340]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 42/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.00s/it, Loss=0.1030, L1=0.0340]
+2026-02-02 17:29:00,838 - INFO - Epoch 42/50 - Train Loss: 0.102982
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:29:03.352370: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:29:05.683886: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:29:09.769382: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:29:12.052405: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.37s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.45s/it]
+2026-02-02 17:29:15,294 - INFO - Epoch 42/50 - Val Loss: 0.081130
+Epoch 43/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:29:17.654349: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:29:19.799717: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:29:24.067590: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:29:26.376160: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 43/50:   0%|          | 0/1 [00:13<?, ?it/s, Loss=0.1024, L1=0.0335]Epoch 43/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.33s/it, Loss=0.1024, L1=0.0335]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 43/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.44s/it, Loss=0.1024, L1=0.0335]
+2026-02-02 17:29:29,740 - INFO - Epoch 43/50 - Train Loss: 0.102428
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:29:32.038486: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:29:34.303266: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:29:38.773657: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:29:41.066409: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.65s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.80s/it]
+2026-02-02 17:29:44,537 - INFO - Epoch 43/50 - Val Loss: 0.081406
+Epoch 44/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:29:46.828367: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:29:49.151660: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:29:53.350361: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:29:55.517876: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 44/50:   0%|          | 0/1 [00:13<?, ?it/s, Loss=0.1015, L1=0.0330]Epoch 44/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.32s/it, Loss=0.1015, L1=0.0330]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 44/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.56s/it, Loss=0.1015, L1=0.0330]
+2026-02-02 17:29:59,107 - INFO - Epoch 44/50 - Train Loss: 0.101512
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:30:01.413240: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:30:03.728531: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:30:07.996899: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:30:10.417859: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.66s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.78s/it]
+2026-02-02 17:30:13,891 - INFO - Epoch 44/50 - Val Loss: 0.081831
+Epoch 45/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:30:16.349297: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:30:18.647327: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:30:22.943528: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:30:25.266904: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 45/50:   0%|          | 0/1 [00:13<?, ?it/s, Loss=0.1004, L1=0.0324]Epoch 45/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.64s/it, Loss=0.1004, L1=0.0324]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 45/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.90s/it, Loss=0.1004, L1=0.0324]
+2026-02-02 17:30:28,789 - INFO - Epoch 45/50 - Train Loss: 0.100407
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:30:31.061023: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:30:33.400030: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:30:37.703066: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:30:39.823950: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.18s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.22s/it]
+2026-02-02 17:30:43,010 - INFO - Epoch 45/50 - Val Loss: 0.082301
+2026-02-02 17:30:43,300 - INFO - Saved checkpoint to ./cnn_teacher_50epoch_v4\checkpoints\checkpoint_epoch_044.pth
+Epoch 46/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:30:45.537454: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:30:47.690427: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:30:51.684183: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:30:53.867726: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 46/50:   0%|          | 0/1 [00:12<?, ?it/s, Loss=0.0994, L1=0.0320]Epoch 46/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.82s/it, Loss=0.0994, L1=0.0320]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 46/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.10s/it, Loss=0.0994, L1=0.0320]
+2026-02-02 17:30:57,405 - INFO - Epoch 46/50 - Train Loss: 0.099439
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:30:59.723005: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:01.909203: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:05.898004: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:08.010695: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.96s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.09s/it]
+2026-02-02 17:31:11,493 - INFO - Epoch 46/50 - Val Loss: 0.082783
+Epoch 47/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:31:13.771104: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:15.968831: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:19.941938: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:22.063264: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 47/50:   0%|          | 0/1 [00:12<?, ?it/s, Loss=0.0986, L1=0.0316]Epoch 47/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.70s/it, Loss=0.0986, L1=0.0316]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 47/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.76s/it, Loss=0.0986, L1=0.0316]
+2026-02-02 17:31:25,251 - INFO - Epoch 47/50 - Train Loss: 0.098585
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:31:27.582271: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:29.751511: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:34.098606: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:36.304284: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.29s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.34s/it]
+2026-02-02 17:31:39,592 - INFO - Epoch 47/50 - Val Loss: 0.083778
+Epoch 48/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:31:41.923283: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:44.141288: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:48.117869: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:50.339493: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 48/50:   0%|          | 0/1 [00:12<?, ?it/s, Loss=0.0979, L1=0.0313]Epoch 48/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.97s/it, Loss=0.0979, L1=0.0313]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 48/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.06s/it, Loss=0.0979, L1=0.0313]
+2026-02-02 17:31:53,654 - INFO - Epoch 48/50 - Train Loss: 0.097909
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:31:56.011560: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:31:58.272372: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:02.265463: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:04.423537: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.08s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.17s/it]
+2026-02-02 17:32:07,828 - INFO - Epoch 48/50 - Val Loss: 0.085507
+Epoch 49/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:32:10.305414: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:12.533042: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:16.702309: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:18.844505: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 49/50:   0%|          | 0/1 [00:13<?, ?it/s, Loss=0.0970, L1=0.0307]Epoch 49/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.18s/it, Loss=0.0970, L1=0.0307]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 49/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.34s/it, Loss=0.0970, L1=0.0307]
+2026-02-02 17:32:22,170 - INFO - Epoch 49/50 - Train Loss: 0.097001
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:32:24.486072: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:26.677096: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:30.648278: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:32.779479: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.77s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.82s/it]
+2026-02-02 17:32:35,995 - INFO - Epoch 49/50 - Val Loss: 0.087666
+Epoch 50/50:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:32:38.317141: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:40.570545: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:44.794631: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:47.011956: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Epoch 50/50:   0%|          | 0/1 [00:13<?, ?it/s, Loss=0.0961, L1=0.0302]Epoch 50/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.22s/it, Loss=0.0961, L1=0.0302]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Epoch 50/50: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.26s/it, Loss=0.0961, L1=0.0302]
+2026-02-02 17:32:50,262 - INFO - Epoch 50/50 - Train Loss: 0.096101
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]2026-02-02 17:32:52.436899: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:54.539768: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:32:58.511298: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:33:00.592680: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.48s/it]Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.52s/it]
+2026-02-02 17:33:03,784 - INFO - Epoch 50/50 - Val Loss: 0.089727
+2026-02-02 17:33:04,064 - INFO - Saved checkpoint to ./cnn_teacher_50epoch_v4\checkpoints\checkpoint_epoch_049.pth
+2026-02-02 17:33:04,174 - INFO - Saved final model to ./cnn_teacher_50epoch_v4\final_model.pth
+2026-02-02 17:33:04,174 - INFO - Training completed!

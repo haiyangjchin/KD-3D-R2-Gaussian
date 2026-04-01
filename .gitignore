@@ -37,9 +37,11 @@ dist/
 # IDE
 .vscode/
 .claude/
+.opencode/
+.ruff_cache/
+.sisyphus/
 
 # logs
-*.log
 train_pid.txt
 
 # numpy / checkpoints
@@ -52,26 +54,6 @@ train_pid.txt
 # outputs
 output/
 outputs/
-cnn_30epoch/
-cnn_analysis/
-cnn_analysis_better2/
-cnn_analysis_teacher/
-cnn_analysis_teacher_v3/
-cnn_better/
-cnn_better2/
-cnn_medium_10epoch/
-cnn_output/
-cnn_output_final/
-cnn_output_test/
-cnn_teacher_30epoch/
-cnn_teacher_30epoch_v2/
-cnn_teacher_30epoch_v3/
-cnn_teacher_50epoch_v4/
-cnn_test/
-distill_final_500/
-distill_student_epoch34_v1/
-distill_test_distill/
-distill_test_distill_medium/
 
 # data
 data/

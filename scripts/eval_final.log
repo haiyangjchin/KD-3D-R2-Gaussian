@@ -1,0 +1,17 @@
+2026-02-02 17:36:36.130775: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:36:38.190773: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-02 17:36:41,553 - INFO - Created model with 21,884,897 parameters
+2026-02-02 17:36:41,553 - INFO - Feature sizes: [32, 64, 128, 256]
+Added torch DLL directory: D:\Anaconda\Lib\site-packages\torch\lib
+Added CUDA DLL directory: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+Added system DLL directory: C:\Windows\System32
+Added system DLL directory: C:\Windows\SysWOW64
+Traceback (most recent call last):
+  File "E:\r2_gaussian\evaluate_cnn_model.py", line 163, in <module>
+    main()
+  File "E:\r2_gaussian\evaluate_cnn_model.py", line 159, in main
+    evaluate_model(args.model_path, args.config_path, args.device)
+  File "E:\r2_gaussian\evaluate_cnn_model.py", line 34, in evaluate_model
+    model.load_state_dict(checkpoint['model_state_dict'])
+                          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: 'model_state_dict'

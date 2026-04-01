@@ -1,0 +1,179 @@
+2026-01-26 17:21:14,089 - INFO - Configuration:
+2026-01-26 17:21:14,089 - INFO -   data_path: ./data/real_dataset/cone_ntrain_25_angle_360/pine
+2026-01-26 17:21:14,090 - INFO -   dataset_type: Blender
+2026-01-26 17:21:14,090 - INFO -   proj_size: [64, 64]
+2026-01-26 17:21:14,090 - INFO -   vol_size: [64, 64, 64]
+2026-01-26 17:21:14,090 - INFO -   max_projections: None
+2026-01-26 17:21:14,090 - INFO -   model_size: medium
+2026-01-26 17:21:14,090 - INFO -   use_dropout: True
+2026-01-26 17:21:14,090 - INFO -   epochs: 30
+2026-01-26 17:21:14,090 - INFO -   lr: 0.001
+2026-01-26 17:21:14,092 - INFO -   weight_decay: 1e-05
+2026-01-26 17:21:14,092 - INFO -   lr_patience: 10
+2026-01-26 17:21:14,092 - INFO -   use_ssim: True
+2026-01-26 17:21:14,092 - INFO -   ssim_weight: 0.1
+2026-01-26 17:21:14,093 - INFO -   output_dir: ./cnn_teacher_30epoch_v3
+2026-01-26 17:21:14,093 - INFO -   save_interval: 5
+2026-01-26 17:21:14,093 - INFO -   log_interval: 10
+2026-01-26 17:21:14,093 - INFO -   use_tensorboard: False
+2026-01-26 17:21:14,093 - INFO -   num_workers: 2
+2026-01-26 17:21:14,093 - INFO -   seed: 42
+2026-01-26 17:21:14,096 - INFO - Saved configuration to ./cnn_teacher_30epoch_v3\config.yaml
+2026-01-26 17:21:14,579 - INFO - Using device: cuda
+2026-01-26 17:21:14,580 - INFO - Creating dataloaders...
+2026-01-26 17:21:14,580 - INFO - Loading scene from ./data/real_dataset/cone_ntrain_25_angle_360/pine (type: Blender)
+Reading camera 1/25 for trainReading camera 2/25 for trainReading camera 3/25 for trainReading camera 4/25 for trainReading camera 5/25 for trainReading camera 6/25 for trainReading camera 7/25 for trainReading camera 8/25 for trainReading camera 9/25 for trainReading camera 10/25 for trainReading camera 11/25 for trainReading camera 12/25 for trainReading camera 13/25 for trainReading camera 14/25 for trainReading camera 15/25 for trainReading camera 16/25 for trainReading camera 17/25 for trainReading camera 18/25 for trainReading camera 19/25 for trainReading camera 20/25 for trainReading camera 21/25 for trainReading camera 22/25 for trainReading camera 23/25 for trainReading camera 24/25 for trainReading camera 25/25 for train2026-01-26 17:21:14,717 - INFO - Loading 25 projections for train split
+2026-01-26 17:21:14,724 - INFO - Original projection shape: (25, 560, 560)
+2026-01-26 17:21:14,724 - INFO - Original volume shape: (256, 256, 256)
+2026-01-26 17:21:14,724 - INFO - Target projection size: [64, 64]
+2026-01-26 17:21:14,724 - INFO - Target volume size: [64, 64, 64]
+2026-01-26 17:21:14,726 - INFO - Loading scene from ./data/real_dataset/cone_ntrain_25_angle_360/pine (type: Blender)
+
+Reading camera 1/25 for trainReading camera 2/25 for trainReading camera 3/25 for trainReading camera 4/25 for trainReading camera 5/25 for trainReading camera 6/25 for trainReading camera 7/25 for trainReading camera 8/25 for trainReading camera 9/25 for trainReading camera 10/25 for trainReading camera 11/25 for trainReading camera 12/25 for trainReading camera 13/25 for trainReading camera 14/25 for trainReading camera 15/25 for trainReading camera 16/25 for trainReading camera 17/25 for trainReading camera 18/25 for trainReading camera 19/25 for trainReading camera 20/25 for trainReading camera 21/25 for trainReading camera 22/25 for trainReading camera 23/25 for trainReading camera 24/25 for trainReading camera 25/25 for train
+Reading camera 1/100 for testReading camera 2/100 for testReading camera 3/100 for testReading camera 4/100 for testReading camera 5/100 for testReading camera 6/100 for testReading camera 7/100 for testReading camera 8/100 for testReading camera 9/100 for testReading camera 10/100 for testReading camera 11/100 for testReading camera 12/100 for testReading camera 13/100 for testReading camera 14/100 for testReading camera 15/100 for testReading camera 16/100 for testReading camera 17/100 for testReading camera 18/100 for testReading camera 19/100 for testReading camera 20/100 for testReading camera 21/100 for testReading camera 22/100 for testReading camera 23/100 for testReading camera 24/100 for testReading camera 25/100 for testReading camera 26/100 for testReading camera 27/100 for testReading camera 28/100 for testReading camera 29/100 for testReading camera 30/100 for testReading camera 31/100 for testReading camera 32/100 for testReading camera 33/100 for testReading camera 34/100 for testReading camera 35/100 for testReading camera 36/100 for testReading camera 37/100 for testReading camera 38/100 for testReading camera 39/100 for testReading camera 40/100 for testReading camera 41/100 for testReading camera 42/100 for testReading camera 43/100 for testReading camera 44/100 for testReading camera 45/100 for testReading camera 46/100 for testReading camera 47/100 for testReading camera 48/100 for testReading camera 49/100 for testReading camera 50/100 for testReading camera 51/100 for testReading camera 52/100 for testReading camera 53/100 for testReading camera 54/100 for testReading camera 55/100 for testReading camera 56/100 for testReading camera 57/100 for testReading camera 58/100 for testReading camera 59/100 for testReading camera 60/100 for testReading camera 61/100 for testReading camera 62/100 for testReading camera 63/100 for testReading camera 64/100 for testReading camera 65/100 for testReading camera 66/100 for testReading camera 67/100 for testReading camera 68/100 for testReading camera 69/100 for testReading camera 70/100 for testReading camera 71/100 for testReading camera 72/100 for testReading camera 73/100 for testReading camera 74/100 for testReading camera 75/100 for testReading camera 76/100 for testReading camera 77/100 for testReading camera 78/100 for testReading camera 79/100 for testReading camera 80/100 for testReading camera 81/100 for testReading camera 82/100 for testReading camera 83/100 for testReading camera 84/100 for testReading camera 85/100 for testReading camera 86/100 for testReading camera 87/100 for testReading camera 88/100 for testReading camera 89/100 for testReading camera 90/100 for testReading camera 91/100 for testReading camera 92/100 for testReading camera 93/100 for testReading camera 94/100 for testReading camera 95/100 for testReading camera 96/100 for testReading camera 97/100 for testReading camera 98/100 for testReading camera 99/100 for testReading camera 100/100 for test2026-01-26 17:21:15,043 - INFO - Loading 100 projections for test split
+2026-01-26 17:21:15,079 - INFO - Original projection shape: (100, 560, 560)
+2026-01-26 17:21:15,079 - INFO - Original volume shape: (256, 256, 256)
+2026-01-26 17:21:15,079 - INFO - Target projection size: [64, 64]
+2026-01-26 17:21:15,079 - INFO - Target volume size: [64, 64, 64]
+2026-01-26 17:21:15,088 - INFO - Creating model...
+2026-01-26 17:21:15,333 - INFO - Created model with 21,884,897 parameters
+2026-01-26 17:21:15,333 - INFO - Feature sizes: [32, 64, 128, 256]
+2026-01-26 17:21:15,854 - INFO - Loading checkpoint from ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_010.pth
+2026-01-26 17:21:16,040 - INFO - Resumed training from epoch 11, best loss: 0.381424
+2026-01-26 17:21:16,040 - INFO - Starting training...
+
+Epoch 12/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 12/30:   0%|          | 0/1 [00:18<?, ?it/s, Loss=0.0673, L1=0.0612]Epoch 12/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:18<00:00, 18.08s/it, Loss=0.0673, L1=0.0612]Epoch 12/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:18<00:00, 18.83s/it, Loss=0.0673, L1=0.0612]
+2026-01-26 17:21:34,871 - INFO - Epoch 12/30 - Train Loss: 0.067293
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:15<00:00, 15.82s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:16<00:00, 16.15s/it]
+2026-01-26 17:21:51,025 - INFO - Epoch 12/30 - Val Loss: 0.347959
+2026-01-26 17:21:51,025 - INFO - New best validation loss: 0.347959
+2026-01-26 17:21:51,536 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_011.pth
+2026-01-26 17:21:52,752 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 13/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 13/30:   0%|          | 0/1 [00:06<?, ?it/s, Loss=0.0648, L1=0.0589]Epoch 13/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:06<00:00,  6.55s/it, Loss=0.0648, L1=0.0589]Epoch 13/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:06<00:00,  6.88s/it, Loss=0.0648, L1=0.0589]
+2026-01-26 17:21:59,634 - INFO - Epoch 13/30 - Train Loss: 0.064760
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.03s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.35s/it]
+2026-01-26 17:22:06,982 - INFO - Epoch 13/30 - Val Loss: 0.322625
+2026-01-26 17:22:06,982 - INFO - New best validation loss: 0.322625
+2026-01-26 17:22:07,874 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_012.pth
+2026-01-26 17:22:12,015 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 14/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 14/30:   0%|          | 0/1 [00:07<?, ?it/s, Loss=0.0624, L1=0.0567]Epoch 14/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.65s/it, Loss=0.0624, L1=0.0567]Epoch 14/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.96s/it, Loss=0.0624, L1=0.0567]
+2026-01-26 17:22:19,980 - INFO - Epoch 14/30 - Train Loss: 0.062396
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:09<00:00,  9.28s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:10<00:00, 10.90s/it]
+2026-01-26 17:22:30,878 - INFO - Epoch 14/30 - Val Loss: 0.295876
+2026-01-26 17:22:30,878 - INFO - New best validation loss: 0.295876
+2026-01-26 17:22:31,211 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_013.pth
+2026-01-26 17:22:31,701 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 15/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 15/30:   0%|          | 0/1 [00:06<?, ?it/s, Loss=0.0602, L1=0.0548]Epoch 15/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:06<00:00,  6.39s/it, Loss=0.0602, L1=0.0548]Epoch 15/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:06<00:00,  6.72s/it, Loss=0.0602, L1=0.0548]
+2026-01-26 17:22:38,420 - INFO - Epoch 15/30 - Train Loss: 0.060228
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.44s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.77s/it]
+2026-01-26 17:22:46,191 - INFO - Epoch 15/30 - Val Loss: 0.265801
+2026-01-26 17:22:46,191 - INFO - New best validation loss: 0.265801
+2026-01-26 17:22:46,702 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_014.pth
+2026-01-26 17:22:48,229 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 16/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 16/30:   0%|          | 0/1 [00:11<?, ?it/s, Loss=0.0583, L1=0.0530]Epoch 16/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:11<00:00, 11.45s/it, Loss=0.0583, L1=0.0530]Epoch 16/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:12<00:00, 12.29s/it, Loss=0.0583, L1=0.0530]
+2026-01-26 17:23:00,521 - INFO - Epoch 16/30 - Train Loss: 0.058340
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.93s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.27s/it]
+2026-01-26 17:23:08,790 - INFO - Epoch 16/30 - Val Loss: 0.236568
+2026-01-26 17:23:08,790 - INFO - New best validation loss: 0.236568
+2026-01-26 17:23:09,274 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_015.pth
+2026-01-26 17:23:10,793 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 17/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 17/30:   0%|          | 0/1 [00:11<?, ?it/s, Loss=0.0564, L1=0.0513]Epoch 17/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:11<00:00, 11.07s/it, Loss=0.0564, L1=0.0513]Epoch 17/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:11<00:00, 11.39s/it, Loss=0.0564, L1=0.0513]
+2026-01-26 17:23:22,185 - INFO - Epoch 17/30 - Train Loss: 0.056376
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.07s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.41s/it]
+2026-01-26 17:23:30,593 - INFO - Epoch 17/30 - Val Loss: 0.207296
+2026-01-26 17:23:30,593 - INFO - New best validation loss: 0.207296
+2026-01-26 17:23:31,478 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_016.pth
+2026-01-26 17:23:34,832 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 18/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 18/30:   0%|          | 0/1 [00:08<?, ?it/s, Loss=0.0543, L1=0.0493]Epoch 18/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.21s/it, Loss=0.0543, L1=0.0493]Epoch 18/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.53s/it, Loss=0.0543, L1=0.0493]
+2026-01-26 17:23:43,366 - INFO - Epoch 18/30 - Train Loss: 0.054281
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:10<00:00, 10.66s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.73s/it]
+2026-01-26 17:23:57,099 - INFO - Epoch 18/30 - Val Loss: 0.182668
+2026-01-26 17:23:57,099 - INFO - New best validation loss: 0.182668
+2026-01-26 17:23:57,777 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_017.pth
+2026-01-26 17:24:00,403 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 19/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 19/30:   0%|          | 0/1 [00:07<?, ?it/s, Loss=0.0522, L1=0.0474]Epoch 19/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.04s/it, Loss=0.0522, L1=0.0474]Epoch 19/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.36s/it, Loss=0.0522, L1=0.0474]
+2026-01-26 17:24:07,771 - INFO - Epoch 19/30 - Train Loss: 0.052191
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:13<00:00, 13.87s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:14<00:00, 14.18s/it]
+2026-01-26 17:24:21,955 - INFO - Epoch 19/30 - Val Loss: 0.159466
+2026-01-26 17:24:21,955 - INFO - New best validation loss: 0.159466
+2026-01-26 17:24:23,635 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_018.pth
+2026-01-26 17:24:25,270 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 20/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 20/30:   0%|          | 0/1 [00:07<?, ?it/s, Loss=0.0503, L1=0.0457]Epoch 20/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.78s/it, Loss=0.0503, L1=0.0457]Epoch 20/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.09s/it, Loss=0.0503, L1=0.0457]
+2026-01-26 17:24:33,363 - INFO - Epoch 20/30 - Train Loss: 0.050292
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.25s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.65s/it]
+2026-01-26 17:24:42,018 - INFO - Epoch 20/30 - Val Loss: 0.135033
+2026-01-26 17:24:42,018 - INFO - New best validation loss: 0.135033
+2026-01-26 17:24:42,365 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_019.pth
+2026-01-26 17:24:42,889 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 21/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 21/30:   0%|          | 0/1 [00:07<?, ?it/s, Loss=0.0481, L1=0.0437]Epoch 21/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.76s/it, Loss=0.0481, L1=0.0437]Epoch 21/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:09<00:00,  9.34s/it, Loss=0.0481, L1=0.0437]
+2026-01-26 17:24:52,230 - INFO - Epoch 21/30 - Train Loss: 0.048092
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.20s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.54s/it]
+2026-01-26 17:24:59,770 - INFO - Epoch 21/30 - Val Loss: 0.109207
+2026-01-26 17:24:59,770 - INFO - New best validation loss: 0.109207
+2026-01-26 17:25:00,240 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_020.pth
+2026-01-26 17:25:01,765 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 22/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 22/30:   0%|          | 0/1 [00:10<?, ?it/s, Loss=0.0461, L1=0.0419]Epoch 22/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:10<00:00, 10.27s/it, Loss=0.0461, L1=0.0419]Epoch 22/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:10<00:00, 10.56s/it, Loss=0.0461, L1=0.0419]
+2026-01-26 17:25:12,330 - INFO - Epoch 22/30 - Train Loss: 0.046068
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:06<00:00,  6.50s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.20s/it]
+2026-01-26 17:25:19,529 - INFO - Epoch 22/30 - Val Loss: 0.083851
+2026-01-26 17:25:19,529 - INFO - New best validation loss: 0.083851
+2026-01-26 17:25:19,993 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_021.pth
+2026-01-26 17:25:20,751 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 23/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 23/30:   0%|          | 0/1 [00:08<?, ?it/s, Loss=0.0437, L1=0.0397]Epoch 23/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.68s/it, Loss=0.0437, L1=0.0397]Epoch 23/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.99s/it, Loss=0.0437, L1=0.0397]
+2026-01-26 17:25:29,745 - INFO - Epoch 23/30 - Train Loss: 0.043690
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:06<00:00,  6.68s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.33s/it]
+2026-01-26 17:25:38,079 - INFO - Epoch 23/30 - Val Loss: 0.062061
+2026-01-26 17:25:38,079 - INFO - New best validation loss: 0.062061
+2026-01-26 17:25:39,061 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_022.pth
+2026-01-26 17:25:41,844 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 24/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 24/30:   0%|          | 0/1 [00:07<?, ?it/s, Loss=0.0417, L1=0.0380]Epoch 24/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.17s/it, Loss=0.0417, L1=0.0380]Epoch 24/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.49s/it, Loss=0.0417, L1=0.0380]
+2026-01-26 17:25:49,339 - INFO - Epoch 24/30 - Train Loss: 0.041748
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.05s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:09<00:00,  9.45s/it]
+2026-01-26 17:25:58,793 - INFO - Epoch 24/30 - Val Loss: 0.047078
+2026-01-26 17:25:58,793 - INFO - New best validation loss: 0.047078
+2026-01-26 17:25:59,108 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_023.pth
+2026-01-26 17:26:00,140 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 25/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 25/30:   0%|          | 0/1 [00:07<?, ?it/s, Loss=0.0409, L1=0.0372]Epoch 25/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.29s/it, Loss=0.0409, L1=0.0372]Epoch 25/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:09<00:00,  9.05s/it, Loss=0.0409, L1=0.0372]
+2026-01-26 17:26:09,197 - INFO - Epoch 25/30 - Train Loss: 0.040914
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.21s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.59s/it]
+2026-01-26 17:26:16,790 - INFO - Epoch 25/30 - Val Loss: 0.037790
+2026-01-26 17:26:16,791 - INFO - New best validation loss: 0.037790
+2026-01-26 17:26:17,313 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_024.pth
+2026-01-26 17:26:19,001 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 26/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 26/30:   0%|          | 0/1 [00:06<?, ?it/s, Loss=0.0403, L1=0.0366]Epoch 26/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:06<00:00,  6.40s/it, Loss=0.0403, L1=0.0366]Epoch 26/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:06<00:00,  6.75s/it, Loss=0.0403, L1=0.0366]
+2026-01-26 17:26:25,750 - INFO - Epoch 26/30 - Train Loss: 0.040309
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.63s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.95s/it]
+2026-01-26 17:26:34,697 - INFO - Epoch 26/30 - Val Loss: 0.033505
+2026-01-26 17:26:34,697 - INFO - New best validation loss: 0.033505
+2026-01-26 17:26:35,712 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_025.pth
+2026-01-26 17:26:36,209 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 27/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 27/30:   0%|          | 0/1 [00:08<?, ?it/s, Loss=0.0401, L1=0.0365]Epoch 27/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.77s/it, Loss=0.0401, L1=0.0365]Epoch 27/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:09<00:00,  9.09s/it, Loss=0.0401, L1=0.0365]
+2026-01-26 17:26:45,303 - INFO - Epoch 27/30 - Train Loss: 0.040122
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:05<00:00,  5.29s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:05<00:00,  5.59s/it]
+2026-01-26 17:26:50,893 - INFO - Epoch 27/30 - Val Loss: 0.031199
+2026-01-26 17:26:50,893 - INFO - New best validation loss: 0.031199
+2026-01-26 17:26:53,447 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_026.pth
+2026-01-26 17:26:53,815 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 28/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 28/30:   0%|          | 0/1 [00:05<?, ?it/s, Loss=0.0393, L1=0.0358]Epoch 28/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:05<00:00,  5.99s/it, Loss=0.0393, L1=0.0358]Epoch 28/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:06<00:00,  6.30s/it, Loss=0.0393, L1=0.0358]
+2026-01-26 17:27:00,115 - INFO - Epoch 28/30 - Train Loss: 0.039334
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.06s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.38s/it]
+2026-01-26 17:27:08,499 - INFO - Epoch 28/30 - Val Loss: 0.029697
+2026-01-26 17:27:08,499 - INFO - New best validation loss: 0.029697
+2026-01-26 17:27:08,810 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_027.pth
+2026-01-26 17:27:09,624 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 29/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 29/30:   0%|          | 0/1 [00:06<?, ?it/s, Loss=0.0379, L1=0.0345]Epoch 29/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:06<00:00,  6.35s/it, Loss=0.0379, L1=0.0345]Epoch 29/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:06<00:00,  6.68s/it, Loss=0.0379, L1=0.0345]
+2026-01-26 17:27:16,308 - INFO - Epoch 29/30 - Train Loss: 0.037939
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:06<00:00,  6.85s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.18s/it]
+2026-01-26 17:27:23,489 - INFO - Epoch 29/30 - Val Loss: 0.028698
+2026-01-26 17:27:23,489 - INFO - New best validation loss: 0.028698
+2026-01-26 17:27:23,964 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_028.pth
+2026-01-26 17:27:27,284 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+Epoch 30/30:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 30/30:   0%|          | 0/1 [00:08<?, ?it/s, Loss=0.0368, L1=0.0334]Epoch 30/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.09s/it, Loss=0.0368, L1=0.0334]Epoch 30/30: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:08<00:00,  8.42s/it, Loss=0.0368, L1=0.0334]
+2026-01-26 17:27:35,709 - INFO - Epoch 30/30 - Train Loss: 0.036762
+Validation:   0%|          | 0/1 [00:00<?, ?it/s]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.04s/it]Validation: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 1/1 [00:07<00:00,  7.37s/it]
+2026-01-26 17:27:43,082 - INFO - Epoch 30/30 - Val Loss: 0.028055
+2026-01-26 17:27:43,082 - INFO - New best validation loss: 0.028055
+2026-01-26 17:27:43,572 - INFO - Saved checkpoint to ./cnn_teacher_30epoch_v3\checkpoints\checkpoint_epoch_029.pth
+2026-01-26 17:27:45,004 - INFO - Saved best model to ./cnn_teacher_30epoch_v3\best_model.pth
+2026-01-26 17:27:46,392 - INFO - Saved final model to ./cnn_teacher_30epoch_v3\final_model.pth
+2026-01-26 17:27:46,392 - INFO - Training completed!
