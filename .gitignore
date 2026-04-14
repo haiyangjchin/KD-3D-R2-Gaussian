@@ -40,6 +40,7 @@ dist/
 .opencode/
 .ruff_cache/
 .sisyphus/
+.openspec/
 
 # logs
 train_pid.txt
@@ -93,5 +94,38 @@ r2_gaussian/submodules/xray-gaussian-rasterization-voxelization/third_party/glm/
 
 # 实验结果文件：
 *.pickle
-*.txt
 
+# ========== 以下为实验相关，不上传到GitHub ==========
+
+# 教师模型权重和checkpoints（只保留配置文件）
+cnn_teachers/*/checkpoints/
+cnn_teachers/*/*.pth
+cnn_teachers/*/final_model.pth
+cnn_teachers/*/best_model.pth
+
+# 实验结果（体积数据、重建图片、checkpoint等）
+experiments/baseline/
+experiments/distill/*/pine_ablation/pine_exp_*/
+experiments/distill/*/walnut_ablation/walnut_exp_*/
+experiments/distill/*/seashell_ablation/seashell_*/
+experiments/distill/**/point_cloud/
+experiments/distill/**/ckpt/
+experiments/**/reconstruction/
+experiments/**/test/
+
+# 实验日志
+experiments/logs/
+
+# 可视化产物（论文图片单独管理）
+experiments/visualizations/
+
+# torch wheels（本地安装包）
+torch_wheels/
+
+# 训练日志
+*.log
+
+
+# Original author assets (not related to our experiments)
+assets/
+openspec/

@@ -1,0 +1,19 @@
+CNN Model Evaluation Report
+============================================================
+
+Model: ./cnn_teacher_50epoch_v4/final_model.pth
+Config: ./cnn_teacher_50epoch_v4/config.yaml
+Device: cuda
+Test samples: 1
+
+Evaluation Metrics:
+  PSNR: 21.5408 dB
+  MAE: 0.024099
+  SSIM: 0.602216
+
+Interpretation:
+- PSNR > 30 dB: Excellent reconstruction
+- PSNR 20-30 dB: Good reconstruction
+- PSNR < 20 dB: Poor reconstruction
+
+The model shows good reconstruction quality.

@@ -283,6 +283,40 @@ class CNNDistillationTeacher:
         return volume
 
 
+class StaticVolumeTeacher:
+    """
+    Static volume teacher for self-distillation.
+    Loads a precomputed volume (e.g., from a stronger baseline) as teacher signal.
+    """
+
+    def __init__(self, volume_path, device="cuda"):
+        vol = np.load(volume_path)
+        self.cached_volume = torch.from_numpy(vol).float()
+        self.device = device
+        print(f"Loaded static volume teacher from {volume_path}")
+        print(
+            f"  Shape: {self.cached_volume.shape}, range: [{vol.min():.4f}, {vol.max():.4f}]"
+        )
+
+    def get_volume(self, scanner_cfg=None):
+        volume = self.cached_volume
+        if scanner_cfg is not None:
+            target_d, target_h, target_w = scanner_cfg["nVoxel"]
+            if volume.shape != (target_d, target_h, target_w):
+                volume = volume.unsqueeze(0).unsqueeze(0)
+                volume = torch.nn.functional.interpolate(
+                    volume,
+                    size=(target_d, target_h, target_w),
+                    mode="trilinear",
+                    align_corners=False,
+                )
+                volume = volume.squeeze(0).squeeze(0)
+        return volume
+
+    def precompute_volume_from_scene(self, scene, scanner_cfg=None):
+        return self.cached_volume
+
+
 def training_with_distillation(
     model_path,
     iteration,
@@ -378,6 +412,17 @@ def training_with_distillation(
 
     # Knowledge distillation loss
     distill_weight = progressive_distill.get_weight(iteration)
+
+    # 延迟蒸馏: warmup阶段不蒸馏，之后按间隔蒸馏
+    warmup_iters = getattr(opt, "distill_warmup_iters", 1000)
+    distill_interval = getattr(opt, "distill_interval", 4)
+
+    if iteration < warmup_iters:
+        distill_weight = 0
+
+    if iteration >= warmup_iters and (iteration - warmup_iters) % distill_interval != 0:
+        distill_weight = 0
+
     if distill_weight > 0 and teacher_model is not None:
         # Get teacher's volume prediction for current viewpoint
         # For distillation, we need to get volume from student at same resolution
@@ -433,7 +478,9 @@ def train_with_distillation(
     opt,
     pipe,
     cnn_model_path=None,
+    cnn_model_size="medium",
     distillation_config=None,
+    distill_overrides=None,
     use_improvements=True,
     output_path=None,
     checkpoint_iterations=[],
@@ -469,6 +516,7 @@ def train_with_distillation(
             "alpha": 0.7,
             "use_kl": True,
             "use_l1": True,
+            "use_mse": False,
             "use_ssim": False,
             "total_iterations": opt.iterations,
             "warmup_ratio": 0.0,
@@ -476,17 +524,35 @@ def train_with_distillation(
             "schedule": "linear",
         }
 
+    # Allow overrides from distill_overrides dict (populated from YAML)
+    if distill_overrides:
+        for key, value in distill_overrides.items():
+            distillation_config[key] = value
+
     # Setup teacher model
     teacher = None
-    if cnn_model_path and osp.exists(cnn_model_path):
+    static_volume_path = distillation_config.get("static_volume_path", None)
+    cnn_target_depth = distillation_config.get("cnn_target_depth", 64)
+    if static_volume_path and osp.exists(static_volume_path):
+        # Self-distillation: use precomputed volume as teacher
+        try:
+            teacher = StaticVolumeTeacher(
+                static_volume_path,
+                device="cuda" if torch.cuda.is_available() else "cpu",
+            )
+            print(f"Self-distillation enabled with static volume teacher")
+        except Exception as e:
+            print(f"Failed to load static volume: {e}")
+            teacher = None
+    elif cnn_model_path and osp.exists(cnn_model_path):
         try:
             teacher = CNNDistillationTeacher(
                 cnn_model_path,
                 device="cuda" if torch.cuda.is_available() else "cpu",
-                target_depth=64,  # Should match training
-                model_size="medium",
+                target_depth=cnn_target_depth,
+                model_size=cnn_model_size,
             )
-            print(f"Knowledge distillation enabled with teacher model")
+            print(f"Knowledge distillation enabled with CNN teacher model")
         except Exception as e:
             print(f"Failed to load teacher model: {e}")
             teacher = None
@@ -674,6 +740,10 @@ def train_with_distillation(
     print(f"Training with distillation completed!")
     if teacher is not None:
         print(f"  Teacher model: {cnn_model_path}")
+    print(f"  Distill warmup iters: {opt.distill_warmup_iters}")
+    print(f"  Distill interval: {opt.distill_interval}")
+    print(f"  Max distill weight: {distillation_config['max_distill_weight']}")
+    print(f"  Schedule: {distillation_config['schedule']}")
     print(
         f"  Final distillation weight: {progressive_distill.get_weight(opt.iterations):.3f}"
     )
@@ -736,6 +806,13 @@ def main():
         help="Path to pre-trained CNN model for distillation",
     )
     parser.add_argument(
+        "--cnn_model_size",
+        type=str,
+        default="medium",
+        choices=["small", "medium", "large"],
+        help="CNN model size for teacher model",
+    )
+    parser.add_argument(
         "--no_distill", action="store_true", help="Disable knowledge distillation"
     )
     parser.add_argument(
@@ -759,7 +836,7 @@ def main():
     args = parser.parse_args()
 
     # Load configuration from YAML file
-    with open(args.config, "r") as f:
+    with open(args.config, "r", encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
 
     # Update args with configuration values
@@ -787,12 +864,39 @@ def main():
             distill_config = json.load(f)
 
     # Check if we should use distillation
-    use_distillation = (
-        not args.no_distill and args.cnn_model and osp.exists(args.cnn_model)
+    has_cnn = args.cnn_model and osp.exists(args.cnn_model)
+    has_static_vol = (
+        hasattr(args, "static_volume_path")
+        and args.static_volume_path
+        and osp.exists(args.static_volume_path)
     )
+    use_distillation = not args.no_distill and (has_cnn or has_static_vol)
 
     # Check if we should use improved training
     use_improvements = not args.no_improvements and IMPROVED_TRAINING_AVAILABLE
+
+    # Build distill_overrides from YAML keys (override distill_config JSON defaults)
+    distill_overrides = {}
+    for key in [
+        "max_distill_weight",
+        "distill_schedule",
+        "warmup_ratio",
+        "temperature",
+        "alpha",
+        "cnn_target_depth",
+        "static_volume_path",
+        "use_kl",
+        "use_mse",
+        "use_l1",
+        "use_mask",
+        "mask_threshold",
+    ]:
+        if hasattr(args, key) and getattr(args, key) is not None:
+            # Map distill_schedule -> schedule for the config dict
+            config_key = (
+                key.replace("distill_", "") if key.startswith("distill_") else key
+            )
+            distill_overrides[config_key] = getattr(args, key)
 
     print("=" * 70)
     print("Training with Knowledge Distillation")
@@ -803,6 +907,10 @@ def main():
     print(f"Knowledge distillation: {'ENABLED' if use_distillation else 'DISABLED'}")
     if use_distillation:
         print(f"  Teacher model: {args.cnn_model}")
+    print(f"Distill warmup iters: {opt_args.distill_warmup_iters}")
+    print(f"Distill interval: {opt_args.distill_interval}")
+    if distill_overrides:
+        print(f"Distill overrides: {distill_overrides}")
     print(f"Improved training: {'ENABLED' if use_improvements else 'DISABLED'}")
     print("=" * 70)
 
@@ -846,7 +954,11 @@ def main():
         opt=opt_args,
         pipe=pipe_args,
         cnn_model_path=args.cnn_model if use_distillation else None,
+        cnn_model_size=args.cnn_model_size
+        if hasattr(args, "cnn_model_size")
+        else "medium",
         distillation_config=distill_config,
+        distill_overrides=distill_overrides if distill_overrides else None,
         use_improvements=use_improvements,
         output_path=args.output_dir,
         checkpoint_iterations=args.checkpoint_iterations,

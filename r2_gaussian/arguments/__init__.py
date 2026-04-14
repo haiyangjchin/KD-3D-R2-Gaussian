@@ -69,6 +69,9 @@ class OptimizationParams(ParamGroup):
         self.max_screen_size = None
         self.max_scale = None  # percent of volume size
         self.max_num_gaussians = 500_000
+        # Distillation scheduling parameters
+        self.distill_warmup_iters = 1000  # iterations before distillation starts
+        self.distill_interval = 4  # compute distillation loss every N iterations
         super().__init__(parser, "Optimization Parameters")
 
 

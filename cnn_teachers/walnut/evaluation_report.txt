@@ -1,0 +1,19 @@
+CNN Model Evaluation Report
+============================================================
+
+Model: cnn_teacher_walnut_75view/best_model.pth
+Config: cnn_teacher_walnut_75view/config.yaml
+Device: cuda
+Test samples: 1
+
+Evaluation Metrics:
+  PSNR: 17.6165 dB
+  MAE: 0.055409
+  SSIM: 0.581841
+
+Interpretation:
+- PSNR > 30 dB: Excellent reconstruction
+- PSNR 20-30 dB: Good reconstruction
+- PSNR < 20 dB: Poor reconstruction
+
+The reconstruction quality needs improvement.
