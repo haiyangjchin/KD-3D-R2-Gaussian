@@ -28,7 +28,7 @@ max_distill_weight: 0.5
 max_num_gaussians: 500000
 max_scale: null
 max_screen_size: null
-model_path: experiments/distill/seashell_ablation/seashell_50view_V
+model_path: experiments/distill/seashell_ablation/seashell_50v_self_masked_mw05
 no_distill: false
 no_improvements: false
 ply_path: ''

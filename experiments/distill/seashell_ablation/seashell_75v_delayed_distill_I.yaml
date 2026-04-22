@@ -3,6 +3,7 @@ checkpoint_iterations:
 - 5000
 - 7500
 - 10000
+cnn_model: ./cnn_teachers/seashell/final_model.pth
 compute_cov3D_python: false
 data_device: cuda
 debug: false
@@ -22,13 +23,12 @@ enhanced_regularization: false
 eval: true
 iterations: 10000
 lambda_dssim: 0.25
-lambda_tv: 0.05
-mask_threshold: 0.01
+lambda_tv: 0.2
 max_distill_weight: 0.5
 max_num_gaussians: 500000
 max_scale: null
 max_screen_size: null
-model_path: experiments/distill/seashell_ablation/seashell_75v_self_masked_mw05
+model_path: experiments/distill/seashell_ablation/seashell_75v_delayed_distill_I
 no_distill: false
 no_improvements: false
 ply_path: ''
@@ -50,7 +50,6 @@ scaling_lr_final: 0.0005
 scaling_lr_init: 0.005
 scaling_lr_max_steps: 30000
 source_path: ./data/real_dataset/cone_ntrain_75_angle_360/seashell
-static_volume_path: experiments/baseline/baseline_75view_seashell/test/iter_10000/vol_pred.npy
 test_iterations:
 - 2500
 - 5000
@@ -58,7 +57,3 @@ test_iterations:
 - 10000
 tv_vol_size: 32
 use_importance_sampling: false
-use_kl: false
-use_l1: true
-use_mask: true
-use_mse: false

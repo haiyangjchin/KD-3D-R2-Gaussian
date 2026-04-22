@@ -3,6 +3,7 @@ checkpoint_iterations:
 - 5000
 - 7500
 - 10000
+cnn_model: ./cnn_teachers/pine/checkpoints/checkpoint_epoch_034.pth
 compute_cov3D_python: false
 data_device: cuda
 debug: false
@@ -16,19 +17,18 @@ density_lr_init: 0.01
 density_lr_max_steps: 30000
 density_min_threshold: 1.0e-05
 detect_anomaly: false
-distill_interval: 8
-distill_warmup_iters: 5000
+distill_interval: 4
+distill_warmup_iters: 1000
 enhanced_regularization: false
 eval: true
 iterations: 10000
 lambda_dssim: 0.25
-lambda_tv: 0.05
-mask_threshold: 0.01
+lambda_tv: 0.1
 max_distill_weight: 0.5
 max_num_gaussians: 500000
 max_scale: null
 max_screen_size: null
-model_path: experiments/distill/seashell_ablation/seashell_75v_self_masked_mw05
+model_path: experiments/distill/pine_ablation/pine_75v_full_distill_A
 no_distill: false
 no_improvements: false
 ply_path: ''
@@ -49,8 +49,7 @@ scale_min: 0.0005
 scaling_lr_final: 0.0005
 scaling_lr_init: 0.005
 scaling_lr_max_steps: 30000
-source_path: ./data/real_dataset/cone_ntrain_75_angle_360/seashell
-static_volume_path: experiments/baseline/baseline_75view_seashell/test/iter_10000/vol_pred.npy
+source_path: ./data/real_dataset/cone_ntrain_75_angle_360/pine
 test_iterations:
 - 2500
 - 5000
@@ -58,7 +57,3 @@ test_iterations:
 - 10000
 tv_vol_size: 32
 use_importance_sampling: false
-use_kl: false
-use_l1: true
-use_mask: true
-use_mse: false

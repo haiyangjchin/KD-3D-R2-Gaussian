@@ -28,7 +28,7 @@ max_distill_weight: 0.5
 max_num_gaussians: 500000
 max_scale: null
 max_screen_size: null
-model_path: experiments/distill/seashell_ablation/seashell_75v_self_masked_mw05
+model_path: experiments/distill/pine_ablation/pine_75v_self_masked_mw05
 no_distill: false
 no_improvements: false
 ply_path: ''
@@ -49,8 +49,8 @@ scale_min: 0.0005
 scaling_lr_final: 0.0005
 scaling_lr_init: 0.005
 scaling_lr_max_steps: 30000
-source_path: ./data/real_dataset/cone_ntrain_75_angle_360/seashell
-static_volume_path: experiments/baseline/baseline_75view_seashell/test/iter_10000/vol_pred.npy
+source_path: ./data/real_dataset/cone_ntrain_75_angle_360/pine
+static_volume_path: experiments/baseline/baseline_75view_pine/test/iter_10000/vol_pred.npy
 test_iterations:
 - 2500
 - 5000
