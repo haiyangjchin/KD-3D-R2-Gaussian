@@ -6,9 +6,9 @@
 
 [Arxiv](https://arxiv.org/abs/2405.20693) | [Data](https://drive.google.com/drive/folders/1YZ3w87XrCNyjDRos6gkY8zgT5hESl-PN?usp=sharing) | [Models](https://drive.google.com/drive/folders/1HIvO7aS2gbp7Qx3ceHiRSNoAKKS_VnjU?usp=sharing) | [Project](https://ruyi-zha.github.io/r2_gaussian/r2_gaussian.html)
 
-<h2> Rectifying Radiative Gaussian Splatting for Tomographic Reconstruction </h2> 
+<h2> KD-3D-R<sup>2</sup>-Gaussian: Knowledge-Distilled Rectifying Radiative Gaussian Splatting for Tomographic Reconstruction </h2> 
 
-*Fast and direct CT reconstruction with 3D Gaussian Splatting.*
+*Fast and direct CT reconstruction with 3D Gaussian Splatting, enhanced with knowledge distillation from CNN teachers.*
 
 
 ![cover](assets/cover.png)
@@ -23,7 +23,7 @@
 
 ### Introduction
 
-This is the official repo of our NeurIPS 2024 paper [R<sup>2</sup>-Gaussian: Rectifying Radiative Gaussian Splatting for Tomographic Reconstruction](https://arxiv.org/abs/2405.20693). If you find this repo useful, please give it a star ⭐ and consider citing our paper.
+This is a fork of the official repo of the NeurIPS 2024 paper [R<sup>2</sup>-Gaussian: Rectifying Radiative Gaussian Splatting for Tomographic Reconstruction](https://arxiv.org/abs/2405.20693), extended with **Knowledge Distillation (KD)** from CNN teachers and **Optuna-based hyperparameter optimization**. If you find this repo useful, please give it a star ⭐ and consider citing our paper.
 
 ### News
 
@@ -37,7 +37,7 @@ We recommend using [Conda](https://docs.conda.io/en/latest/miniconda.html) to se
 
 ```sh
 # Download code
-git clone https://github.com/Ruyi-Zha/r2_gaussian.git --recursive
+git clone https://github.com/haiyangjchin/KD-3D-R2-Gaussian.git --recursive
 
 # Install environment
 SET DISTUTILS_USE_SDK=1 # Windows only
@@ -53,7 +53,7 @@ pip install TIGRE-2.3/Python --no-build-isolation
 We notice that there might be some installation issues with Conda. You can alternatively try installing via pip (adapted from [4DRGS](https://github.com/ShanghaiTech-IMPACT/4DRGS)).
 
 ```sh
-git clone https://github.com/Ruyi-Zha/r2_gaussian.git --recursive
+git clone https://github.com/haiyangjchin/KD-3D-R2-Gaussian.git --recursive
 conda create -n r2_gaussian python=3.9 -y
 conda activate r2_gaussian
 
@@ -382,7 +382,47 @@ Flag to skip reconstructing the volume.
 
 You can find all trained models [here](https://drive.google.com/drive/folders/1HIvO7aS2gbp7Qx3ceHiRSNoAKKS_VnjU?usp=sharing). We report quantitative results on all datasets (synthetic, real, and SAX-NeRF datasets) [here](assets/results.md).
 
-## 4. Generate your own data
+## 4. Knowledge Distillation (New)
+
+This fork introduces **Knowledge Distillation** to improve reconstruction quality, especially with limited views. A pre-trained CNN teacher model provides additional supervision to the 3D Gaussian student.
+
+### 4.1 Pre-trained CNN Teachers
+
+We provide pre-trained CNN teacher models for three real-world objects under `cnn_teachers/`:
+
+```sh
+cnn_teachers/
+├── pine/         # CNN teacher for pine dataset
+├── seashell/     # CNN teacher for seashell dataset
+└── walnut/       # CNN teacher for walnut dataset
+```
+
+Each directory contains `config.yaml` (model configuration), `final_model.pth` (trained weights), and evaluation reports.
+
+### 4.2 Training with Distillation
+
+Use `train_with_distillation.py` to train 3D Gaussians with knowledge distillation from a CNN teacher.
+
+```sh
+python train_with_distillation.py -s <path to data> --teacher_path <path to CNN teacher>
+```
+
+Additional arguments:
+- `--teacher_path`: Path to the CNN teacher model directory
+- `--distill_weight`: Weight of distillation loss (default: `0.1`)
+- `--distill_type`: Type of distillation — `feature` or `output` (default: `feature`)
+
+### 4.3 Hyperparameter Search with Optuna
+
+Use `optuna_search.py` to automatically find optimal distillation hyperparameters using TPE (Tree-structured Parzen Estimator) with Hyperband pruning.
+
+```sh
+python optuna_search.py --data <path to data> --teacher_path <path to CNN teacher>
+```
+
+This will search over distillation weight, loss type, and training hyperparameters, pruning underperforming trials at iterations 2500 and 5000.
+
+## 5. Generate your own data
 
 :exclamation: Our code supports both cone beam and parallel beam configurations.
 
@@ -392,7 +432,7 @@ If you have (more than 100) X-ray projections but do not have ground volumes, fo
 
 If you want to test your own data, please first convert it to our format (`meta_data.json`) or SAX-NeRF (`*.pickle`) and generate initialization point clouds with `initialize_pcd.py`.
 
-## 5. Acknowledgement, license and citation
+## 6. Acknowledgement, license and citation
 
 Our code is adapted from [Gaussian Splatting](https://github.com/graphdeco-inria/gaussian-splatting), [SAX-NeRF](https://github.com/caiyuanhao1998/SAX-NeRF), [NAF](https://github.com/Ruyi-Zha/naf_cbct) and [TIGRE toolbox](https://github.com/CERN/TIGRE.git). We thank the authors for their excellent works.
 
