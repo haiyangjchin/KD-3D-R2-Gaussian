@@ -126,6 +126,4 @@ torch_wheels/
 *.log
 
 
-# Original author assets (not related to our experiments)
-assets/
 openspec/
